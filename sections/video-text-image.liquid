@@ -1,0 +1,174 @@
+<div class="c_vid_txt_img_big_sec">
+  <div class="c_vid_txt_img_main_sec container">
+    <div class="c_vid_txt_img_parnt_sec">
+      <div class="c_single_video_part">
+        <!-- <video nocontrols loop muted autoplay src="{{ section.settings.custom_video }}"></video> -->
+        {{
+            section.settings.custom_video
+            | video_tag: image_size: '1100x', loop: true, controls: true, muted: false
+          }}
+      </div>
+      <div class="c_single_content_part">
+        <div class="c_sec_cont_info">
+          {% if section.settings.c_sec_head != blank %}
+            <h2>{{ section.settings.c_sec_head }}</h2>
+          {% endif %}
+          <div class="c_sec_desc_area">
+            {% if section.settings.c_sec_desc != blank %}
+              {{ section.settings.c_sec_desc }}
+            {% endif %}
+          </div>
+          {% if section.settings.c_sec_btn_txt != blank %}
+            <div class="c_sec_butn">
+              <a href="{{ section.settings.c_sec_btn_link }}" class="btn btn-custom c_vid_btn">
+                {{ section.settings.c_sec_btn_txt }}
+              </a>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+      <div class="c_single_img_part">
+        {% if section.settings.c_sec_img != blank %}
+          <img src="{{ section.settings.c_sec_img | img_url:'master' }}" alt="product-image">
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+    .c_vid_txt_img_big_sec{
+      padding:40px 0;
+    }
+    .c_vid_txt_img_parnt_sec {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .c_single_video_part {
+      width: 30%;
+      padding: 0 10px 0 0;
+    }
+    .c_single_content_part {
+      width: 40%;
+      padding: 0 10px 0 30px;
+    }
+    .c_single_img_part {
+      width: 30%;
+    }
+    .c_single_img_part img {
+      width: 100%;
+      display: block;
+    }
+    .c_sec_cont_info h2 {
+      font-size: 30px;
+      text-align: center;
+      font-weight: 500;
+      margin: 0;
+      text-transform: uppercase;
+      line-height: normal;
+      color: {{ section.settings.c_sec_txt_color }};
+    }
+    .c_sec_desc_area {
+      padding: 45px 0 60px 0;
+      margin: 0;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: normal;
+      color: {{ section.settings.c_sec_txt_color }};
+    }
+    .c_sec_desc_area ul {
+      margin: 0;
+      padding: 0;
+    }
+    .c_sec_desc_area li {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: normal;
+      color: {{ section.settings.c_sec_txt_color }};
+    }
+    .c_sec_desc_area p {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: normal;
+      color: {{ section.settings.c_sec_txt_color }};
+    }
+    @media(max-width:1024px){
+  .c_sec_cont_info h2 {
+      font-size: 26px;
+  }
+    }
+     @media(max-width:767px){
+  .c_sec_cont_info h2 {
+      font-size: 23px;
+  }
+       .c_single_video_part {
+      width: 100%;
+      padding: 0;
+  }
+       .c_single_content_part {
+             text-align: center;
+      width: 100%;
+      padding: 20px 0;
+  }
+       .c_single_img_part {
+      width: 100%;
+  }
+       .c_sec_desc_area {
+    padding: 15px 0 25px 0;
+       }
+    }
+</style>
+
+{% schema %}
+{
+  "name": "Video Text Image",
+  "settings": [
+    {
+      "type": "video",
+      "id": "custom_video",
+      "label": "Select Video"
+    },
+    {
+      "type": "text",
+      "id": "c_sec_head",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "c_sec_desc",
+      "label": "Description"
+    },
+    {
+      "type": "color",
+      "id": "c_sec_txt_color",
+      "label": "Text color",
+      "default": "#000"
+    },
+    {
+      "type": "text",
+      "id": "c_sec_btn_txt",
+      "label": "Button text",
+      "default": "shop now"
+    },
+    {
+      "type":"url",
+      "id": "c_sec_btn_link",
+      "label":"Button Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "c_sec_img",
+      "label": "Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video Text Image",
+      "category": "custom work"
+    }
+  ]
+}
+{% endschema %}

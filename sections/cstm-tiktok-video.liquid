@@ -1,0 +1,632 @@
+<style>
+
+  .cstm_video_main{
+    padding: 25px 0;
+  }
+  
+  .video-social-heading {
+    display: block;
+    width: 100%;
+    margin: 0;
+    font-size: 23.8px;
+    color: #120a0a;
+    line-height: 130%;
+    text-transform: unset;
+    text-align: center;
+  }
+
+  .video-social-body {
+    margin-top: 10px;
+  }
+
+  .video-social-grid {
+    gap: 24px;
+    grid-template-columns: repeat(1, minmax(0px, 1fr));
+  }
+
+  /* .video-social-slider {
+    display: none;
+  } */
+
+  .video-social-slider {
+    padding-bottom: 25px;
+  }
+
+  .video-social-slider .swiper-wrapper {
+    align-items: stretch !important;
+  }
+
+  .video-social-slider .swiper-slide {
+    height: auto !important;
+  }
+
+  .video-social-item {
+    position: relative;
+    padding: 0px 0px;
+    border-radius: 12px;
+    border: 0px solid #120a0a;
+    background-color: #ffffff;
+    box-sizing: border-box !important;
+    overflow: hidden;
+  }
+
+  .video-social-video {
+    height: auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .video-social-video video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    box-shadow: none;
+    border: 0px;
+  }
+
+  .video-social-video > svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  .video-social-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    padding: 11px;
+    box-sizing: border-box;
+    cursor: pointer;
+    background-color: #000000;
+    color: #ffffff;
+    opacity: 0.9;
+    transition: all 0.25s ease 0s;
+  }
+
+  .video-social-btn:hover {
+    transition: all 0.25s ease 0s;
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+
+  .video-social-item.active .video-social-btn {
+    display: none;
+  }
+
+  .video-social-btn img,
+  .video-social-btn svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  .video-social-btn svg path {
+    fill: #ffffff;
+  }
+
+  .video-social-content {
+    position: relative;
+    padding: 15px 12px
+  }
+
+  .video-social-text {
+    display: block;
+    width: 100%;
+    margin: 0;
+    font-size: 13.6px;
+    color: #120a0a;
+    line-height: 130%;
+    text-transform: unset;
+    text-align: center;
+  }
+
+  .video-social-icon {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    border-bottom-right-radius: 12px;
+    border-top-left-radius: 12px;
+  }
+
+  .video-social-icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  .video-social-btn-next,
+  .video-social-btn-prev {
+    position: absolute !important;
+    top: 39% !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    border-radius: 50%;
+    border: 1px solid #000000 !important;
+    width: 30px !important;
+    height: 30px !important;
+    background: #ffffff !important;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+  }
+
+  .video-social-btn-prev {
+    left: 5px !important;
+  }
+  
+  .video-social-btn-next {
+    right: 5px !important;
+  }
+
+  .video-social-btn-next svg {
+    transform: rotate(180deg);
+  }
+
+  .video-social-btn-next svg,
+  .video-social-btn-prev svg {
+    width: 23px !important;
+    height: 23px !important;
+  }
+
+  .video-social-btn-prev svg path,
+  .video-social-btn-next svg path {
+    transition: all 0.25s ease 0s;
+    fill: #000000;
+  }
+
+  .video-social-btn-next svg {
+    margin-left: 2px;
+  }
+  
+  .video-social-btn-prev svg {
+    margin-left: -1px;
+  }
+
+  .video-social-btn-next:hover,
+  .video-social-btn-prev:hover {
+    border: 1px solid #000000 !important;
+    background: #000000 !important;
+    transition: all 0.25s ease 0s;
+  }
+
+  .video-social-btn-next:hover svg path,
+  .video-social-btn-prev:hover svg path {
+    fill: #ffffff !important;
+    transition: all 0.25s ease 0s;
+  }
+
+  .video-social-pagination {
+    display: none;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    bottom: 0;
+  }
+
+  .video-social-pagination .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background: transparent !important;
+    border: 1px solid #000000;
+  }
+
+  .video-social-pagination .swiper-pagination-bullet-active {
+    background: #000000 !important;
+  }
+
+  .video-social-pagination .swiper-pagination-bullet:hover {
+    border-color: #000000;
+  }
+
+  .video-social-link {
+    margin: 0px;
+    margin-top: 27px;
+    padding: 12px 38px;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 15.3px;
+    line-height: 130%;
+    color: #120a0a;
+    background-color: #ffffff;
+    border: 2px solid #120a0a;
+    border-radius: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: none;
+    transition: all 0.25s ease 0s;
+  }
+
+  .video-social-link:hover {
+    transition: all 0.25s ease 0s;
+    color: #ffffff;
+    border: 2px solid #120a0a;
+    background-color: #120a0a;
+  }
+
+  .video-social-link svg path {
+    transition: all 0.25s ease 0s;
+    stroke: #120a0a;
+  }
+
+  .video-social-link:hover svg path {
+    transition: all 0.25s ease 0s;
+    stroke: #ffffff;
+  }
+
+  .video-social-slider-wrapper {
+    position: relative;
+  }
+  
+  @media(min-width: 768px) {
+
+    .section {
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
+    
+    .section-settings {
+      padding: 0 5rem;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      padding-left: 5rem;
+      padding-right: 5rem;
+    }
+
+    .video-social-heading {
+      font-size: 28px;
+    }
+
+    .video-social-body {
+      margin-top: 36px;
+    }
+
+    .video-social-grid {
+      gap: 24px;
+      grid-template-columns: repeat(2, minmax(0px, 1fr));
+    }
+
+    .video-social-item {
+       padding: 0px 0px;
+    }
+
+    .video-social-video {
+      height: auto;
+    }
+
+    .video-social-btn {
+      width: 60px;
+      height: 60px;
+      padding: 15px;
+    }
+
+    .video-social-content {
+      padding: 20px 16px
+    }
+
+    .video-social-text {
+      font-size: 16px;
+    }
+
+    .video-social-btn-next,
+    .video-social-btn-prev {
+      width: 40px !important;
+      height: 40px !important;
+    }
+
+    .video-social-btn-next svg,
+    .video-social-btn-prev svg {
+      width: 30px !important;
+      height: 30px !important; 
+    }
+
+    .video-social-pagination .swiper-pagination-bullet {
+      width: 15px;
+      height: 15px;
+    }
+
+    .video-social-link {
+      font-size: 18px;
+      margin-top: 36px;
+      padding: 16px 50px;
+    }
+
+  }
+
+  @media(min-width: 992px) {
+    .video-social-grid {
+      grid-template-columns: repeat(3, minmax(0px, 1fr));
+    }
+  }
+    .section-settings {
+      max-width: 130rem;
+    }
+  
+ 
+    .video-social-grid {
+      display: none !important;
+    }
+  
+    .video-social-slider-wrapper {
+      display: block !important;
+    }
+
+    @media(min-width: 768px) {
+     .video-social-grid {
+        display: grid !important;
+      }
+    
+      .video-social-slider-wrapper {
+        display: none !important;
+      } 
+    }
+
+    .video-social-pagination {
+       display: flex !important;
+    }
+    .video-social-btn-next,
+    .video-social-btn-prev {
+      display: none !important;
+    }
+    .video-social-slider {
+      padding-bottom: 30px !important;
+    }
+    @media(min-width: 1024px) {
+      .video-social-slider {
+        padding-bottom: 0px !important;
+      }
+    }
+
+    @media(min-width: 768px) {
+      .video-social-btn-next,
+      .video-social-btn-prev {
+        display: flex !important;
+      }
+      .video-social-pagination {
+        display: none !important;
+      }
+    }
+
+    .video-social-link {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+
+
+<div class="cstm_video_main" style="background-color:{{ section.settings.bg }};">
+    <div class="page-width">
+      
+        <h2 class="video-social-heading">{{ section.settings.heading }}</h2>
+      
+      <div class="video-social-body">
+        <div class="video-social-grid">
+          {% for block in section.blocks %}
+            {% if block.type == 'tiktok' %}
+              <div class="video-social-item">
+              <div class="video-social-video">
+                
+               {{
+                  block.settings.video
+                  | video_tag:
+                    image_size: '1100x',
+                    autoplay: true,
+                    loop: true,
+                    controls: true,
+                    muted: false
+                }}
+                
+                <div class="video-social-btn">
+                  
+                    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" fill="none" viewBox="0 0 10 14"><path fill-rule="evenodd" clip-rule="evenodd" d="M1.48177 0.814643C0.81532 0.448245 0 0.930414 0 1.69094V12.2081C0 12.991 0.858787 13.4702 1.52503 13.0592L10.5398 7.49813C11.1918 7.09588 11.1679 6.13985 10.4965 5.77075L1.48177 0.814643Z" fill="currentColor"></path></svg>
+                  
+                </div>
+              </div>
+              
+                <div class="video-social-content">
+                  <p class="video-social-text">{{ block.settings.content }}</p>
+                </div>
+              
+              
+                <div class="video-social-icon">
+                  
+                    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M0 12C0 5.37258 5.37258 0 12 0H36V24C36 30.6274 30.6274 36 24 36H0V12Z" fill="#120A0A"></path>
+                      <path d="M28.9699 15.8297C26.8636 15.8765 24.8977 15.2212 23.2126 14.0042V22.3828C23.2126 28.2338 16.8467 31.8848 11.7914 28.9827C6.73619 26.0338 6.73619 18.7318 11.7914 15.7829C13.2425 14.9403 14.9744 14.6127 16.6595 14.8467V19.0594C14.085 18.2169 11.6042 20.5105 12.1659 23.1317C12.7744 25.7529 15.9573 26.7827 17.9701 24.9572C18.6722 24.3019 19.0935 23.3657 19.0935 22.3828V6H23.2126C23.2126 6.37446 23.2126 6.70212 23.3062 7.07658C23.587 8.62124 24.4764 9.97867 25.8338 10.8212C26.7232 11.4297 27.8466 11.7574 28.9699 11.7574V15.8297Z" fill="white"></path>
+                  </svg>
+                  
+                </div>
+              
+            </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="video-social-slider-wrapper">
+          <div class="video-social-slider">
+                {% for block in section.blocks %}
+                  {% if block.type == 'tiktok' %}
+                  <div class="video-social-item">
+                    <div class="video-social-video">
+                     {{
+                        block.settings.video
+                        | video_tag:
+                          image_size: '1100x',
+                          autoplay: true,
+                          loop: true,
+                          controls: true,
+                          muted: false
+                      }}
+                    
+                    <div class="video-social-btn">
+                      
+                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation" fill="none" viewBox="0 0 10 14"><path fill-rule="evenodd" clip-rule="evenodd" d="M1.48177 0.814643C0.81532 0.448245 0 0.930414 0 1.69094V12.2081C0 12.991 0.858787 13.4702 1.52503 13.0592L10.5398 7.49813C11.1918 7.09588 11.1679 6.13985 10.4965 5.77075L1.48177 0.814643Z" fill="currentColor"></path></svg>
+                      
+                    </div>
+                  </div>
+                  
+                    <div class="video-social-content">
+                      <p class="video-social-text">{{ block.settings.content }}</p>
+                    </div>
+                  
+                  
+                    <div class="video-social-icon">
+                                            
+                      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 12C0 5.37258 5.37258 0 12 0H36V24C36 30.6274 30.6274 36 24 36H0V12Z" fill="#120A0A"></path>
+                        <path d="M28.9699 15.8297C26.8636 15.8765 24.8977 15.2212 23.2126 14.0042V22.3828C23.2126 28.2338 16.8467 31.8848 11.7914 28.9827C6.73619 26.0338 6.73619 18.7318 11.7914 15.7829C13.2425 14.9403 14.9744 14.6127 16.6595 14.8467V19.0594C14.085 18.2169 11.6042 20.5105 12.1659 23.1317C12.7744 25.7529 15.9573 26.7827 17.9701 24.9572C18.6722 24.3019 19.0935 23.3657 19.0935 22.3828V6H23.2126C23.2126 6.37446 23.2126 6.70212 23.3062 7.07658C23.587 8.62124 24.4764 9.97867 25.8338 10.8212C26.7232 11.4297 27.8466 11.7574 28.9699 11.7574V15.8297Z" fill="white"></path>
+                    </svg>
+                    
+                    </div>
+                  
+                </div>
+                  {% endif %}
+                {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+<script>
+
+  $(document).ready(function () {
+  // Initialize Slick Slider
+  $('.video-social-slider').slick({
+    dots: false,
+    speed: 300,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: false,
+    infinite: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: false,
+        },
+      },
+      {
+        breakpoint: 769,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          autoplay: false,
+          dots: true,
+          infinite: true,
+          fade: true,
+          arrows: false,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: false,
+          infinite: true,
+          dots: true,
+          autoplay: false,
+          fade: true,
+          focusOnSelect: true,
+          pauseOnHover: false,
+        },
+      },
+    ],
+  });
+
+  // Attach click event listener to each video-social-item
+  $('.video-social-item').on('click', function () {
+    var $video = $(this).find('video')[0];
+    if ($video) {
+      if ($video.paused) {
+        $video.play();
+      } else {
+        $video.pause();
+      }
+      $(this).toggleClass('active');
+    }
+  });
+
+  // Pause other videos when slide changes
+  $('.video-social-slider').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+    var $currentSlide = $(slick.$slides.get(currentSlide));
+    var $nextSlide = $(slick.$slides.get(nextSlide));
+
+    // Pause the video in the current slide
+    var $currentVideo = $currentSlide.find('video')[0];
+    if ($currentVideo) {
+      $currentVideo.pause();
+      $currentSlide.removeClass('active');
+    }
+
+    // Play the video in the next slide
+    var $nextVideo = $nextSlide.find('video')[0];
+    if ($nextVideo) {
+      $nextVideo.play();
+      $nextSlide.addClass('active');
+    }
+  });
+});
+
+
+</script>
+
+
+{% schema %}
+  {
+    "name": "Tiktok Video",
+    "settings": [
+      {
+        "type":"color",
+        "id":"bg",
+        "label":"Background"
+      },
+      {
+        "type":"text",
+        "id":"heading",
+        "label":"Heading"
+      }
+    ],
+    "max_blocks": 3,
+    "blocks":[
+      {
+        "type":"tiktok",
+        "name":"Videos",
+        "settings":[
+            {
+              "type": "video",
+              "id": "video",
+              "label": "t:sections.video.settings.video.label"
+            },
+            {
+              "type":"textarea",
+              "id":"content",
+              "label":"Content"
+            }
+        ]
+      }
+    ],
+    "presets":[
+      {
+        "name":"Tiktok Video"
+      }
+    ]
+  }
+{% endschema %}

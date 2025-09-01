@@ -1,0 +1,485 @@
+<div class="ah__custom-featured">
+  <div class="ah__fearue-container">
+    <div class="ah__collection-btns">
+      {% for block in section.blocks %}
+      {% assign collection = collections[block.settings.p_collection] %}
+      <div class="ah__item-btn">
+        <h3 class="ah__collection-title {% if forloop.first %}active{% endif %}"  data-title="{{collection.title | downcase | strip}}">{{collection.title}}</h3>
+        <div class="ah__tab-underline {% if forloop.first %}current{% endif %}"></div>
+      </div>
+      {% endfor %}
+    </div>      
+
+
+{% for block in section.blocks %}
+    <div class="ah__products" {% if forloop.first %}style="display: block;"{% endif %} data-title="{{collections[block.settings.p_collection].title | downcase | strip}}">
+      <div class="ah__product-items">  
+        {% for product in collections[block.settings.p_collection].products limit:6  %}
+          <div class="ah__prd-img">
+            <a href="{{ product.url }}" class="ah__prd-link">
+              <div class="ah__items-images">
+                {% if product.featured_media != blank %}
+                  <img src="{{ product.featured_media | img_url: 'master' }}" alt="" class="ah__item-img1">
+                {% endif %}
+                {% if product.images[1] != blank %}
+                  <img src="{{ product.images[1] | img_url: 'master' }}" alt="" class="ah__item-img2">
+                {% endif %}
+              </div>
+            </a>
+            <div class="ah__prd-content-t">
+              <h2 class="ah__prd-title">
+                {{ product.title }}
+              </h2>
+            </div>
+            <div class="ah__prd__reg-price">
+              {{ product.price | money }}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="ah_show-button"><a href="{{ collection.url }}" class="ah__show-collection">{{ block.settings.c-btn }}</a></div>
+    </div>
+{% endfor %}
+
+       
+   
+  </div>
+</div>
+
+<style>
+
+	.ah__fearue-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0px 20px;
+}
+
+  .ah__feat-heading {
+    color: #000;
+    font-size: 32px;
+    letter-spacing: .05em;
+    font-weight: 500;
+    text-transform: capitalize;
+    position: relative;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+
+
+  .ah__collection-btns {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    margin: 0;
+  }
+
+  .ah__item-btn {
+    position: relative;
+    display: block;
+  }
+
+  .ah__collection-title {
+    font-size: 24px;
+    background-color: transparent;
+    color: rgb(51, 51, 51);
+    padding: 20px;
+    position: relative;
+    transition: all 0.3s linear 0s;
+    cursor: pointer;
+    white-space: nowrap;
+    text-transform: capitalize;
+    margin: 0;
+  }
+
+  .ah__collection-title:hover{
+    background-color: transparent;
+    color: rgb(38, 171, 255);
+  }
+
+  .ah__collection-title.active {
+    background-color: transparent;
+    color: rgb(38, 171, 255);
+  }
+
+  .ah__prd__reg-price {
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(69, 69, 69);
+    text-align: left;
+}
+  
+  .ah__prd-content-t {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+  
+  .ah__tab-underline {
+    border-radius: 2px;
+    width: 50px;
+    height: 4px;
+    background-color: rgb(38, 171, 255);
+    position: absolute;
+    bottom: 3px;
+    left: 0px;
+    right: 0px;
+    margin: 0px auto;
+    transition: all 0.1s linear 0s;
+    display: block !important;
+    visibility: hidden;
+  }
+
+ .ah__product-items {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 0px;
+    justify-content: space-between;
+}
+
+.ah__prd-img {
+    width: 27%;
+    text-align: center;
+    margin-bottom: 40px;
+  position: relative;
+  padding-top: 40px;
+}
+
+  .ah__items-images{
+   position: relative;
+    display: block;
+    transition: transform .3s;
+    overflow: hidden;
+    min-height: 160px;
+    width: 100%;
+  }
+  
+ .ah__item-img1 {
+    width: 100%;
+    max-width: 100%;
+    display: block;
+       opacity: 1;
+}
+  
+   .ah__item-img2 {
+    width: 100%;
+    max-width: 100%;
+    display: block;
+    position: absolute;
+    top: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    opacity: 0;
+}
+  
+  .ah__items-images:hover .ah__item-img2{
+  opacity: 1;
+  }
+
+  .ah__prd-title {
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 0;
+    color: rgb(51, 51, 51);
+  }
+
+  .ah__prd-link {
+    text-decoration: none;
+    cursor: pointer;
+    color: rgb(51, 51, 51);
+  }
+
+  .ah__products{
+    display: none;
+  }
+
+/* .ah_show-button {
+    display: flex;
+    align-items: center;
+    padding: 0px 10px;
+    font-size: 20px;
+    text-transform: capitalize;
+    border: 1px solid rgb(51, 51, 51);
+    height: 48px;
+    text-align: center;
+    width: 136px;
+    color: rgb(51, 51, 51);
+    justify-content: center;
+    margin: 25px auto;
+} */
+
+  .ah__show-collection {
+    text-decoration: none;
+    font-size: 20px;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    padding: 0px 10px;
+    text-transform: capitalize;
+    border: 1px solid rgb(51, 51, 51);
+    height: 48px;
+    text-align: center;
+    width: 136px;
+    color: rgb(51, 51, 51);
+    justify-content: center;
+    margin: 25px auto;
+  }
+  .ah__show-collection:hover{
+    color: #fff !important;
+    background: rgb(51, 51, 51);
+  }
+
+  .ah__tab-underline.current{
+    visibility: visible;
+  }
+
+  
+  ._color_swatches {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+  
+.color__ {
+    margin: 4px 5px;
+    padding: 5px;
+    width: 20px;
+    height: 20px;
+    display: block;
+    flex-shrink: 0;
+    border-radius: 50%;
+    color: #fff;
+    outline-offset: 3px;
+}
+  
+  .color__.custom-active{
+    outline: 1px solid rgb(42, 169, 255);
+  }
+  
+/*   .custom-swatch-c{
+    display: block;
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+/*     background: #000 none repeat scroll 0 0; */
+/*     color: #fff;
+  }  */
+  
+  
+  .ah__lbl-tag {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgb(246, 144, 0);
+    min-width: 60px;
+    padding: 3px 5px;
+    color: rgb(255, 255, 255);
+    font-size: 12px;
+    text-align: center;
+    text-transform: capitalize;
+}
+  
+  @media screen and (max-width:1023px){
+  
+  
+    
+        .ah__prd-img {
+    width: 50%;
+    padding: 0px 10px 20px;
+    border-right: 1px solid rgb(239, 239, 239);
+    border-bottom: 1px solid rgb(239, 239, 239);
+              margin-bottom: 10px;
+}
+    .ah__prd-img:nth-child(even) {
+    border-right: 0px;
+    }
+    
+    
+    ._prod_details {
+    overflow-x: scroll;
+}
+    
+    ._color_swatches{
+        min-width: 300px;
+    overflow: hidden;
+    align-items: center;
+          justify-content: flex-start;
+    margin-bottom: 20px;
+    }
+    
+    .color__ {
+    width: 22px;
+    height: 22px;
+    }
+    
+    .ah__prd-content-t{
+    display: none;
+    }
+     .ah__items-images {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding-top: 30px;
+       min-height: auto;
+}
+    .ah__lbl-tag {
+    display: none;
+}
+    
+    .ah__product-items{
+        border-top: 1px solid rgb(239, 239, 239);
+    }
+    
+    .ah__collection-btns{
+    margin: 0 0 30px;
+    }
+    
+  }
+  
+  
+  @media screen and (max-width:480px){
+  
+    .ah__fearue-container{
+    padding: 25px 5px;
+    }
+    
+    .ah__lbl-tag{
+        font-size: 10px;
+    }
+  
+    .ah__prd__reg-price {
+    font-size: 14px;
+    }
+    
+    .ah__prd-title {
+    font-size: 12px;
+    }
+    
+    ._color_swatches {
+    min-height: 50px;
+      min-width: 240px;
+}
+    
+  .ah__items-images {
+    display: flex;
+    height: 120px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding-top: 30px;
+       min-height: auto;
+}
+    
+  .color__ {
+    width: 18px;
+    height: 18px;
+}
+    
+    .ah__collection-title {
+    font-size: 22px;
+    }
+    
+  }
+
+</style> 
+
+
+<script>
+
+
+  $(document).ready(function () {
+    $(".ah__collection-title").click(function () {
+      $(".ah__collection-title").removeClass('active');
+      $(this).addClass('active');
+      $(".ah__tab-underline").removeClass('current');
+      $(this).siblings(".ah__tab-underline").addClass('current');
+      let title = $(this).attr("data-title");
+      $(".ah__products").hide();
+      $(".ah__products").each(function(){
+        if($(this).attr("data-title") == title){
+          $(this).fadeIn(200);
+        }
+      });
+    });
+  });
+
+    $(".color__").click(function(){
+    $(this).parent().find(".color__").removeClass("custom-active");
+    $(this).addClass("custom-active");
+
+    var color_name = $(this).text();
+    $(this).parents('.ah__prd-img').find('.color_namee').text(color_name);
+
+    let a = $(this).parents(".ah__prd-img").find(".ah__items-images");
+    let img = $(this).parents(".ah__prd-img").find(".ah__item-img1");
+      let img2 = $(this).parents(".ah__prd-img").find(".ah__item-img2");
+      console.log(img2, 'fdsfdsf');
+    let text = $(this).attr("data-color").toLowerCase().trim();
+      console.log(text, 'dsfdsfdfd');
+  $(this).parents('.ah__color__variant').find(".custom-master-select option").each(function(i){
+      if($(this).text().toLowerCase().trim().indexOf(text) != -1){
+        a.attr("href", $(this).val());
+        if($(this).attr("data-img") != "none"){
+          img.attr("src", $(this).attr("data-img"));
+        }
+          if($(this).attr("data-image-hover") != "none"){
+          img2.show();
+          img2.attr("src", $(this).attr("data-image-hover"));
+            console.log($(this).attr("data-image-hover"),"addd_____");
+          }else{
+          img2.hide();
+          }
+      }
+    });
+  });
+
+
+</script>
+
+{% schema %}
+{
+"name": "Home Feature Collection",
+"settings": [
+
+],
+"blocks":[
+{
+"type":"collection_title",
+"name":"product collection",
+"settings":[
+{
+"type":"collection",
+"id": "p_collection",
+"label": "product"
+},
+{
+"type":"text",
+"id":"c-btn",
+"label":"Button",
+"default":"show All"
+}
+]
+}
+],
+"presets":[
+{
+"name" : "Home Feature Collection",
+"category" : "custom section"
+}
+]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

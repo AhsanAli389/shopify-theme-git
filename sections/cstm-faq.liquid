@@ -1,0 +1,137 @@
+<div class="main-faq">
+   <div class="con-faq">
+     <div class="pk9_faq">
+       <h4>{{ section.settings.faq_title}}</h4>
+     </div>
+     {% for block in section.blocks %}
+       <div class="accordian">
+          <div class="ques active">
+            <h3>{{ block.settings.title }}</h3>
+          </div>
+          <div class="ans active">
+            {{ block.settings.para }}
+          </div>
+       </div>
+       {% endfor %}
+   </div>
+</div>
+
+
+
+<style>
+.accordian {
+    padding: 20px;
+    margin-bottom: 18px;
+}  
+ .con-faq {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+.pk9_faq h4 {
+    text-align: center;
+    text-transform: none;
+    line-height: 1.5;
+    color: #333;
+    display: block;
+    letter-spacing: 1px;
+    font-size: 19px;
+    margin-bottom: .75em;
+}  
+.ques h3{
+    padding: 10px 0px 10px 0px;
+    color: #333;
+    text-align: left;
+    display: block;
+    cursor: pointer;
+    width: 100%;
+    outline: none;
+    text-transform: initial;
+    min-height: auto;
+    height: auto;
+    line-height: inherit;
+    font-weight: 700;
+    font-style: normal;
+    box-shadow: none;
+    border-radius: 0;
+    font-size: 18px;
+}
+
+.active i {
+    transform: rotateX(180deg);
+}
+  
+.ans {
+    overflow: hidden;
+}  
+.ans p{
+  margin: 0;
+}
+.ans.active {
+    display: none;
+}  
+</style>
+
+<script>
+
+
+
+$(document).ready(function() {
+    $('.ques').click(function() {
+        var $this = $(this);
+        var $accordion = $this.closest('.accordian');
+        
+        if (!$this.hasClass('active')) {
+ 
+            $('.accordian').not($accordion).each(function() {
+                $(this).find('.ans').slideUp();
+                $(this).find('.ques').removeClass('active');
+            });
+
+            $this.addClass('active');
+            $this.next('.ans').slideDown();
+        } else {
+            $this.toggleClass('active');
+            $this.next('.ans').slideToggle();
+        }
+    });
+});
+
+  
+ 
+</script>
+
+{% schema %}
+  {
+    "name": "Faq",
+    "settings": [
+      {
+        "type": "text",
+        "id": "faq_title",
+        "label": "Title"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "block",
+        "name": "Faq block",
+        "settings": [
+          {
+            "type":"text",
+            "id": "title",
+            "label": "Question"
+          },
+          {
+            "type": "richtext",
+            "id": "para",
+            "label": "Answers"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+       "name": "cstm-faq" 
+      }
+    ]
+  }
+{% endschema %}

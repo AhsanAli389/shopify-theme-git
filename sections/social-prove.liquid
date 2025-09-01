@@ -1,0 +1,99 @@
+<div class="" bis_skin_checked="1">
+<div class="ecomtraffic-clients" bis_skin_checked="1">
+  <div class="ecomtraffic_padding-global" bis_skin_checked="1">
+    <div class="ecomtraffic_container-large" bis_skin_checked="1">
+      <div class="ecomtraffic_padding-section ecomtraffic_is--global" bis_skin_checked="1">
+        <div class="ecomtraffic_usage-grid" bis_skin_checked="1">
+          <div id="w-node-_47f8e06b-fb4e-c862-2e46-18ca3768239c-37682397" class="ecomtraffic_usage-card ecomtraffic_is--intro" bis_skin_checked="1">
+            <div class="ecomtraffic_clients-ccontent ecomtraffic_is--intro" bis_skin_checked="1">
+              <div class="ecomtraffic_usage-ctitle" bis_skin_checked="1">
+                <h2 class="ecomtraffic_global-title">{{ section.settings.title }}<br>
+<span style="{{ section.settings.highlight-color }}">{{ section.settings.highlight-text }}</span></h2>
+              </div>
+              <div class="ecomtraffic_clients-cdesc" bis_skin_checked="1">
+                {{ section.settings.richtext }}
+              </div>
+              <div class="ecomtraffic_button-wrapper is--clients" bis_skin_checked="1">
+                <a href="/collections/verzwaringsknuffels-van-lotgenootje-2kg" class="ecomtraffic_button w-inline-block">
+                  <div bis_skin_checked="1">{{ section.settings.button }}</div>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="ecomtraffic_usage-card ecomtraffic_is--image is--desktop" bis_skin_checked="1">
+            <div id="w-node-_47f8e06b-fb4e-c862-2e46-18ca376823bf-37682397" class="ecomtraffic_client-mockup" bis_skin_checked="1">
+              <div class="ecomtraffic_client-image" bis_skin_checked="1">
+                {% if section.settings.right-image != blank %}
+                <img class="ecomtraffic_image ecomtraffic_is--cover" src="{{ section.settings.right-image | img_url : "master" }}" width="" height="" alt="" sizes="(max-width: 479px) 93vw, (max-width: 767px) 95vw, (max-width: 991px) 92vw, 30vw" loading="lazy" srcset="//lotgenootje.com/cdn/shop/t/22/assets/lotgenootje-img2_500x.png?v=24677689160470514651733998531 500w, //lotgenootje.com/cdn/shop/t/22/assets/lotgenootje-img2.png?v=24677689160470514651733998531 774w">
+               {% endif %}
+                  </div>
+              <div class="ecomtraffic_views-wrapper" bis_skin_checked="1">
+                <div class="ecomtraffic_eye-icon" bis_skin_checked="1">
+                  {% if section.settings.eye-icon != blank %}
+                  <img src="{{ section.settings.eye-icon | img_url : "master"}}" width="" height="" loading="lazy" alt="" class="ecomtraffic_image ecomtraffic_is--contain">
+                    {% endif %}
+                </div>
+                <div bis_skin_checked="1">{{ section.settings.eye-text }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Social Prove",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "highlight-text",
+        "label": "Highlight Text"
+      },
+      {
+        "type": "color",
+        "id": "highlight-color",
+        "label": "Highlight Color"
+      },
+      {
+        "type": "richtext",
+        "id": "richtext",
+        "label": "Richtext"
+      },
+      {
+        "type": "text",
+        "id": "button",
+        "label": "Button Text"
+      },
+      {
+        "type": "image_picker",
+        "id": "right-image",
+        "label": "Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "eye-icon",
+        "label": "View Image"
+      },
+      {
+        "type": "text",
+        "id": "eye-text",
+        "label": "View Text"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Social Prove"
+      }
+    ]
+  }
+{% endschema %}

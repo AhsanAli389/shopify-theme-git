@@ -1,0 +1,84 @@
+<fullscreen-promotion class="fullscreen-promotion spacing-default">
+    <div class="fullscreen-promotion__overlay" style="opacity: 0.497048;"></div>
+    <picture>
+      <source media="(max-width: 740px)" height="1720" width="1300" alt="" srcset="{{ section.settings.img | image_url : "master" }}">
+      {% if section.settings.img != blank %}
+      <img class="fullscreen-promotion__image" loading="lazy" height="1680" width="3840" alt="" src="{{ section.settings.img | image_url : "master" }}" srcset="//www.waterdrop.de/cdn/shop/files/DMW-Challenge-Home-Desktop_1_600x.jpg?v=1724338253 600w, //www.waterdrop.de/cdn/shop/files/DMW-Challenge-Home-Desktop_1_700x.jpg?v=1724338253 700w, //www.waterdrop.de/cdn/shop/files/DMW-Challenge-Home-Desktop_1_800x.jpg?v=1724338253 800w, //www.waterdrop.de/cdn/shop/files/DMW-Challenge-Home-Desktop_1_1000x.jpg?v=1724338253 1000w, //www.waterdrop.de/cdn/shop/files/DMW-Challenge-Home-Desktop_1_1200x.jpg?v=1724338253 1200w, //www.waterdrop.de/cdn/shop/files/DMW-Challenge-Home-Desktop_1_1400x.jpg?v=1724338253 1400w, //www.waterdrop.de/cdn/shop/files/DMW-Challenge-Home-Desktop_1_1600x.jpg?v=1724338253 1600w, //www.waterdrop.de/cdn/shop/files/DMW-Challenge-Home-Desktop_1_1800x.jpg?v=1724338253 1800w, //www.waterdrop.de/cdn/shop/files/DMW-Challenge-Home-Desktop_1_2000x.jpg?v=1724338253 2000w, //www.waterdrop.de/cdn/shop/files/DMW-Challenge-Home-Desktop_1_2200x.jpg?v=1724338253 2200w, //www.waterdrop.de/cdn/shop/files/DMW-Challenge-Home-Desktop_1_2400x.jpg?v=1724338253 2400w, //www.waterdrop.de/cdn/shop/files/DMW-Challenge-Home-Desktop_1_2600x.jpg?v=1724338253 2600w, //www.waterdrop.de/cdn/shop/files/DMW-Challenge-Home-Desktop_1_2800x.jpg?v=1724338253 2800w, //www.waterdrop.de/cdn/shop/files/DMW-Challenge-Home-Desktop_1_3000x.jpg?v=1724338253 3000w" style="transform: matrix(1.01006, 0, 0, 1.01006, 0, -40.2361);">
+      {% endif %}
+    </picture>
+    <div class="container fullscreen-promotion__content toBottom" aria-live="polite" aria-hidden="false" style="opacity: 1;">
+        <div class="fullscreen-promotion__content--medium">
+          <div class="p2">
+                    {{ section.settings.subheading }}
+                </div>
+          <h2 class="title t-upper fullscreen-promotion__heading">
+                    {{ section.settings.title }}
+                </h2>
+          <div class="p2 fullscreen-promotion__text">
+                   {{ section.settings.p_rich }}
+                </div>
+          <a href="{{ section.settings.btn_url }}" class="button-primary-inverse">
+                    {{ section.settings.btn_txt }}
+                </a>
+        </div>
+    </div>
+</fullscreen-promotion>
+
+
+<style>
+ .shopify-section.fullscreen-image-promotion{--heading-color:255,255,255;--text-color:255,255,255;
+  --primary-button-background:255,255,255;
+  --primary-button-text-color:0,0,0}fullscreen-promotion{height:100vh;max-height:840px;position:relative;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end;overflow:hidden;margin:var(--spacing-40) 0}@media (max-width:959px){fullscreen-promotion{max-height:545px}}fullscreen-promotion .video-wrapper video{width:100%;height:100%;-o-object-fit:cover;object-fit:cover;-o-object-position:50% 50%;object-position:50% 50%}.fullscreen-promotion__overlay{position:absolute;top:0;left:0;width:100%;height:100%;z-index:1;background:-webkit-gradient(linear,left bottom,left top,from(rgba(33,33,33,.7)),to(transparent));background:linear-gradient(0deg,rgba(33,33,33,.7) 0,transparent 100%)}.fullscreen-promotion__image,.fullscreen-promotion__media{--translation-effect:200px;position:absolute;top:0;left:0;width:100%;height:calc(100% + var(--translation-effect));-o-object-fit:cover;object-fit:cover;-webkit-transition:-webkit-transform .15s ease-out;transition:-webkit-transform .15s ease-out;transition:transform .15s ease-out;transition:transform .15s ease-out,-webkit-transform .15s ease-out;will-change:transform}.fullscreen-promotion__content{--vertical-spacer:24px;position:absolute;width:100%;left:0;right:0;z-index:2;-webkit-transition:opacity .25s ease;transition:opacity .25s ease;text-align:left}.fullscreen-promotion__content .button-primary-inverse{margin-top:var(--spacing-24)}.fullscreen-promotion__content .title{font-family:var(--gt-medium);font-size:2.25rem;font-weight:500;font-stretch:normal;font-style:normal;line-height:1.25;letter-spacing:normal}@media (max-width:959px){.fullscreen-promotion__content .title{font-size:1.625rem;line-height:1.27}}.fullscreen-promotion__content.isFixed{position:fixed;bottom:var(--spacing-60)}@media (max-width:959px){.fullscreen-promotion__content.isFixed{bottom:var(--spacing-40);-webkit-transition:bottom .2s ease-out,opacity .25s ease;transition:bottom .2s ease-out,opacity .25s ease}}.fullscreen-promotion__content.toBottom{bottom:var(--spacing-60)}@media (max-width:959px){.fullscreen-promotion__content.toBottom{bottom:var(--spacing-40);-webkit-transition:bottom .4s ease-out;transition:bottom .4s ease-out}}.fullscreen-promotion__content.toTop{top:var(--vertical-spacer)}.fullscreen-promotion__content .fullscreen-promotion__content--fill{width:100%}@media (min-width:600px){.fullscreen-promotion__content{--vertical-spacer:40px}.fullscreen-promotion__content .fullscreen-promotion__content--large{width:75%}}@media (min-width:960px){.fullscreen-promotion__content{width:100%;padding:0 var(--spacing-24)}.fullscreen-promotion__content .width-lg{width:50%}.fullscreen-promotion__content .fullscreen-promotion__content--small{width:37.5%}.fullscreen-promotion__content .fullscreen-promotion__content--medium{width:50%}}@media (max-width:959px){.fullscreen-promotion__content{width:calc(100% - var(--spacing-12) * 2)}}.fullscreen-promotion__heading{margin:var(--spacing-2) 0 0}.fullscreen-promotion__text{margin-top:var(--spacing-16)}
+  .fullscreen-promotion__text p{margin:0}
+  
+  @media (max-width:959px){
+    .fullscreen-promotion__text{margin-top:var(--spacing-12)}} 
+</style>
+
+
+
+
+
+
+{% schema %}
+  {
+    "name": "Fullscreen Promotion",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "img",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "subheading",
+        "label": "SubHeading"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "richtext",
+        "id": "p_rich",
+        "label": "Paragraph"
+      },
+      {
+        "type": "text",
+        "id": "btn_txt",
+        "label": "Button Text",
+      },
+      {
+        "type": "url",
+        "id": "btn_url",
+        "label": "Button URL"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Full screen Promotion"
+      }
+    ]
+  }
+{% endschema %}

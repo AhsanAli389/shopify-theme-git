@@ -1,0 +1,165 @@
+<div class="main_container">
+  <div class="container">
+     <div class="cstm_heading">
+      <h2>{{ section.settings.title }}</h2>  
+     </div>
+    <div class="cstm_tbl_heading">
+      <div class="cstm_tbl_content">
+        <div class="cstm_title_content">
+          <h3 class="cstm_htitle">{{ section.settings.date }}</h3>
+        </div>
+        <div class="cstm_title_content">
+          <h3 class="cstm_htitle">{{ section.settings.name }}</h3>
+        </div>
+        <div class="cstm_title_content">
+          <h3 class="cstm_htitle">{{ section.settings.link }}</h3>
+        </div>
+      </div>
+    </div>
+   <div class="content">
+      <div class="cstm_bg">
+        {% for block in section.blocks %}
+         <div class="cstm_flex_content">
+           <div class="cstm_date_content">
+             <p>{{ block.settings.date }}</p>
+           </div>
+           <div class="cstm_date_content">
+             <a href="block.settings.url">{{ block.settings.name }}</a>
+           </div>
+           <div class="cstm_date_content">
+             <a href="block.settings.url1">{{ block.settings.learn }}</a>
+           </div>
+         </div>
+         {% endfor %} 
+      </div>
+   </div>
+  </div>
+</div>
+
+
+<style>
+
+.main_container {
+    max-width: 1180px;
+    margin: 0 auto;
+}
+  
+.cstm_heading h2 {
+    font-weight: 600;
+    font-size: 29px;
+}
+  
+.cstm_tbl_content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 19px;
+}
+
+.cstm_title_content {
+    width: 40%;
+}
+  
+.cstm_title_content:last-child {
+    width: 10%;
+} 
+  
+.cstm_title_content h3 {
+    font-size: 21px;
+    font-weight: 600;
+}  
+
+.cstm_flex_content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1A003B;
+    border-radius: 20px 20px 20px 20px;
+    padding: 0 19px;
+    margin-bottom: 25px;
+}
+  
+.cstm_date_content a {
+    text-decoration: none;
+}  
+
+.cstm_date_content {
+    color: white;
+    width: 40%;
+}
+
+.cstm_date_content a {
+    text-decoration: none;
+    color: white;
+}
+
+.cstm_date_content:last-child {
+    width: 10%;
+}
+
+  
+</style>
+ {% schema %}
+  {
+    "name": "Giveaway Calendar",
+    "settings": [
+      {
+      "type": "text",
+        "id": "title",
+        "label": "Heading"
+    },
+      {
+        "type": "text",
+        "id": "date",
+        "label": "Title1"
+      },
+      {
+        "type": "text",
+        "id": "name",
+        "label": "Title2"
+      },
+      {
+        "type": "text",
+        "id": "link",
+        "label": "Title3"
+      },
+      
+    ],
+    "blocks": [
+       {
+        "type": "block",
+        "name": "Table block",
+         "settings": [
+           {
+             "type": "text",
+             "id": "date",
+             "label": "Date"
+           },
+           {
+             "type": "text",
+             "id": "name",
+             "label": "Name"
+           },
+           {
+             "type": "url",
+             "id": "url",
+             "label": "Name URL"
+           },
+           {
+             "type": "text",
+             "id": "learn",
+             "label": "LINK"
+           },
+           {
+             "type": "url",
+             "id": "url1",
+             "label": "Link URL"
+           }
+         ]
+       }
+    ],
+   "presets":[{
+     "name": "Giveaway Calendar"
+   }]
+ }   
+{% endschema %}

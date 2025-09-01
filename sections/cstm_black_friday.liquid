@@ -1,0 +1,92 @@
+<div class="pk9_banner_container">
+<div class="pk9_pw_">
+   <div class="pk9-rel"  {% if section.settings.pk9_img != blank %} style="background-image: url({{ section.settings.pk9_img | img_url: "master"}});"{% endif %}>
+       <div class="pk9_banner_content">
+         {% if section.settings.pk9_title !=blank %}  
+         <div class="pk9_heading">
+             <h2>{{ section.settings.pk9_title }}</h2>
+           </div>
+         {% endif %}
+         {% if section.settings.rt != blank %}
+             <div class="pk9_richtext">
+              {{ section.settings.rt }}
+           </div>
+         {% endif %}
+       </div>
+   </div>
+</div>
+</div>
+
+<style>
+ .pk9-rel {
+    background-position: center;
+    position: relative;
+    height: 450px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+  .cstm_pk9_img img {
+    width: 100%;
+    object-fit: cover;
+    display: block;
+    height: 450px;
+}
+  .pk9_banner_content {
+    position: relative;
+    top: 0;
+    left: 0%;
+    color: white;
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 auto;
+    height: 100%;
+}
+ .pk9_heading h2 {
+    color: white;
+    font-size: 13rem;
+    font-weight: 600;
+    margin: 0;
+    line-height: .8;
+    letter-spacing: 10px;
+}
+ .pk9_richtext {
+    font-size: 5rem;
+    font-weight: 600;
+    width: 48%;
+    line-height: 1;
+}
+</style>
+
+{% schema %}
+  {
+    "name": "Shytiger Banner",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "pk9_img",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "pk9_title",
+        "label": "Title"
+      },
+      {
+        "type": "richtext",
+        "id": "rt",
+        "label": "Content"
+      }
+    ],
+    "presets": [
+      {
+        "name": "ShyTiger Banner"
+      }
+    ]
+  }
+{% endschema %}

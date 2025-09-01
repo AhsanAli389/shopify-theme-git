@@ -1,0 +1,68 @@
+<div class="ecomtraffic-pdp-split" bis_skin_checked="1">
+  <div class="ecomtraffic_padding-global" bis_skin_checked="1">
+    <div class="ecomtraffic_container-large" bis_skin_checked="1">
+      <div class="pdp-split__wrappper" bis_skin_checked="1">
+         {% for block in section.blocks %}
+          <div class="pdp-split__item" bis_skin_checked="1">
+            <div class="pdp-split__image" bis_skin_checked="1">
+                {% if block.settings.image != blank %}
+                <img src="{{ block.settings.image | img_url : "master"}}" alt="" srcset="//lotgenootje.com/cdn/shop/files/fd780dccf4c3a60c7e06aa46daf7e54b_1.png?crop=center&amp;height=387&amp;v=1735300641&amp;width=352 352w, //lotgenootje.com/cdn/shop/files/fd780dccf4c3a60c7e06aa46daf7e54b_1.png?crop=center&amp;height=387&amp;v=1735300641&amp;width=500 500w" width="500" height="387" loading="lazy">
+               {% endif %}
+            </div>
+            <div class="pdp-split__content" bis_skin_checked="1">
+              <div class="pdp-split__title" bis_skin_checked="1">
+                   {% if block.settings.icon != blank %}
+                  <img src="{{ block.settings.icon | img_url : "master"}}" alt="Verzwaringsknuffel icoontje 2kg " srcset="//lotgenootje.com/cdn/shop/files/Verzwaringsknuffel-lotgenootje-icoon-2kg.png?v=1735070043&amp;width=100 100w" width="100" height="100" loading="lazy">
+                   {% endif %}
+                {{ block.settings.title }}
+              </div>
+              <div class="pdp-split__text" bis_skin_checked="1">
+                {{ block.settings.paragraph }}
+              </div>
+            </div>
+          </div>
+         {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Multirow",
+    "settings": [],
+    "blocks": [
+      {
+        "type": "block",
+        "name": "Multi Blocks",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "icon",
+            "label": "Icon"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "richtext",
+            "id": "paragraph",
+            "label": "Richtext"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Multirow"
+      }
+    ]
+  }
+{% endschema %}

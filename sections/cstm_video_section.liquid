@@ -1,0 +1,79 @@
+<div class="section-inner">
+   <div class="">
+      <div class="cstm_video_flex">
+       {% for block in section.blocks %} 
+        <div class="Video_column1">
+        {% if block.settings.video != blank %}
+         <div class="cstm_video">
+      {{ video | video_tag: autoplay: autoplay, loop: loop, muted: muted, controls: controls, data-selector: "native-video", class: 'hero-video-mp4', image_size: '1100x' }}
+        </div>
+        {% else %}
+         <div class="cstm_video">
+           <iframe width="560" height="315" src="{{ block.settings.iframe }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+         </div>
+         {% endif %}
+        </div>
+       {% endfor %}
+        </div>
+      </div> 
+   </div>
+
+<style>
+.cstm_video_flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Video_column1 {
+    width: 49%;
+}
+
+.cstm_video iframe {
+    width: 100%;
+    height: 400px;
+}  
+
+@media (max-width: 767px) {
+  .cstm_video_flex {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+  .Video_column1 {
+    width: 100%;
+}
+}  
+</style>
+{% schema %}
+  {
+    "name": "Video Section",
+    "settings": [
+      
+    ],
+    "max_blocks": 2,
+    "blocks": [
+      {
+        "type": "select",
+        "name":"Video",
+        "settings": [
+          {
+       "type": "video",
+       "id": "video",
+       "label": "Video"
+      },
+      {
+        "type": "url",
+        "id": "iframe",
+        "label": "Youtube Video"
+      }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Video Section"
+      }
+    ]
+  }
+{% endschema %}

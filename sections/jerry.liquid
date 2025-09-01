@@ -1,0 +1,109 @@
+<div class="main-con">
+  <div class="cstm-cont">
+      
+    <div class="cstm-imgs">
+      {% if section.settings.images != blank %}    
+      <img src="{{ section.settings.images | img_url: "master"}}" width="" height="" loading="lazy" >
+      {% endif %}    
+      {% if section.settings.images1 != blank %}
+      <img src="{{ section.settings.images1 | img_url: "master"}}" width="" height="" loading="lazy" >
+      {% endif %}
+      {% if section.settings.images2 != blank %}
+      <img src="{{ section.settings.images2 | img_url: "master"}}" width="" height="" loading="lazy" >
+      {% endif %}  
+    </div>
+    <div class="rating-content">
+       <div class="rating-name">
+          <span>{{ section.settings.title }}</span>
+         {% if section.settings.img != blank %}
+         <img src="{{ section.settings.img | img_url: "master" }}" width="" height="" loading="lazy">
+         {% endif %} 
+       </div>
+       <span>{{ section.settings.rich }}</span>
+    </div>
+  </div>
+</div>
+
+<style>
+
+.cstm-cont {
+    display: flex;
+    align-items: center;
+}  
+.cstm-imgs {
+    display: flex;
+    align-items: center;
+    width: 70px;
+}  
+  
+.cstm-imgs img {
+    border-radius: 100%;
+    width: 22px;
+    height: 22px;
+}
+
+  .rating-content{
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    line-height: 18px;
+    color: #000;
+  }
+
+  .rating-name {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    font-weight: 600;
+    padding-right: 5px;
+}
+
+  .rating-content img{
+    width: 20px;
+    height: 20px
+  }
+  
+</style>
+
+{% schema %}
+  {
+    "name": "jerry",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "images",
+        "label": "Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "images1",
+        "label": "Image 2"
+      },
+      {
+        "type": "image_picker",
+        "id": "images2",
+        "label": "Image 2"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Name"
+      },
+      {
+        "type": "image_picker",
+        "id": "img",
+        "label":  "Icon"
+      },
+      {
+        "type": "richtext",
+        "id": "rich",
+        "label": "Text"
+      }
+    ],
+    "presets": [
+      {
+      "name": "jerry"
+    }]
+  }
+{% endschema %}

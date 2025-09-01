@@ -1,0 +1,137 @@
+<div class="container-main">
+  <div class="head">
+     <div class="cstm-head">
+        <h2>{{ section.settings.title }}</h2> 
+     </div>
+  </div>
+  <div class="main-block">
+  {% for block in section.blocks %}
+  <div class="cstm-block">
+      <div class="cstm-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="34" height="27" viewBox="0 0 34 27" fill="none">
+                    <path d="M19.372 27V19.5286C19.372 15.6126 19.8412 12.4008 20.7796 9.89313C21.7528 7.3855 23.3863 5.25573 25.6801 3.50382C27.9739 1.75191 30.5806 0.583969 33.5 0V5.9771C31.4494 7.14504 30.2852 8.70802 30.0071 10.666H33.5V27H19.372ZM0.5 27V19.5286C0.5 15.6126 0.969194 12.4008 1.90758 9.89313C2.88073 7.3855 4.51422 5.25573 6.80806 3.50382C9.13665 1.75191 11.7433 0.583969 14.628 0V5.9771C12.5774 7.14504 11.4131 8.70802 11.1351 10.666H14.628V27H0.5Z" fill="#383F42"></path>
+                  </svg>
+       </div>
+       <div class="cstm-txt">
+        <p>{{ block.settings.text }}</p>
+      </div>
+     <div class="cstm-img">
+         <img src="{{ block.settings.img | img_url :"master" }}" width="" height="" loading="lazy"  >
+     </div>
+</div>
+{% endfor  %}
+  </div> 
+</div>
+
+
+<style>
+  .cstm-txt {
+    color: #383F42;
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.cstm-block {
+    width: 40%;
+    text-align: center;
+}
+.main-block {
+    display: flex;
+    justify-content: space-between;
+}
+.container-main {
+    padding: 40px;
+}  
+
+.cstm-img img {
+    width: 200px;
+    height: auto;
+    object-fit: cover;
+   margin: 0 auto;
+}
+
+.cstm-head h2 {
+    text-align: center;
+    font-size: 30px;
+    color: #383F42;
+    font-weight: 600;
+    letter-spacing: -0.8px;
+    margin-bottom: 35px;
+}  
+</style>
+
+<script>
+  $('.main-block').slick({
+  dots: false,
+  infinite: false,
+  arrows: false,  
+  speed: 300,
+  slidesToShow: 2,
+  slidesToScroll: 1,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: false
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+    // You can unslick at a given breakpoint now by adding:
+    // settings: "unslick"
+    // instead of a settings object
+  ]
+});
+</script>
+{% schema %}
+  {
+    "name": "Media Testimonial",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      }
+    ],
+    "presets": [
+      {
+        "name":"Media Testimonials"
+      }
+    ],
+    "blocks": [
+        {
+          "type": "block",
+          "name":"Testi Block",
+          "settings": [
+            {
+              "type": "text",
+              "id": "text",
+              "label": "Description"
+            },
+            {
+              "type": "image_picker",
+              "id": "img",
+              "label": "Image"
+            }
+          ]
+        }
+    ]
+  }
+{% endschema %}

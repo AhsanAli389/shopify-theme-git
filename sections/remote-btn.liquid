@@ -1,0 +1,406 @@
+<div>
+<audio src="https://cdn.shopify.com/s/files/1/0585/8276/1677/files/Wave_Sound.wav?v=1713776536" id="audioBlock-wave"></audio>
+<audio src="https://cdn.shopify.com/s/files/1/0585/8276/1677/files/Flik_Bell_Sound.wav?v=1713776536" id="audioBlock-middle"></audio>
+  <div class="rmt_main-container"> 
+      <div class="background-container"> <div class="background background-car" style="{% if section.settings.car-img != blank %}background-image: url({{section.settings.car-img | img_url: "master"}});{% endif %}"></div> 
+        <div class="background background-hand" style="{% if section.settings.hand-img != blank %}background-image: url({{section.settings.hand-img | img_url: "master"}});{% endif %}"></div> 
+        <div class="background background-finger invisible" style="{% if section.settings.finger-img != blank %}background-image: url({{section.settings.finger-img | img_url: "master"}});{% endif %}"></div>
+      </div> 
+      <div class="remote-container q" style="{% if section.settings.remote-img != blank %}background-image: url({{ section.settings.remote-img | img_url: "master" }});{% endif %}"> 
+        <div class="remote remote-bubble" style="{% if section.settings.remote-bubble != blank %}background-image: url({{section.settings.remote-bubble | img_url: "master" }});{% endif %}"></div>
+        <button class="remote remote-hand highlight" fdprocessedid="yke3fo" style="{% if section.settings.remote-hand != blank %}background-image: url({{section.settings.remote-hand | img_url: "master"}});{% endif %}"></button> 
+        <button class="remote remote-finger" fdprocessedid="ge4yl7" style="{% if section.settings.remote-finger != blank %}background-image: url({{section.settings.remote-finger | img_url: "master"}});{% endif %}"></button> 
+      </div>
+  </div> 
+</div>
+
+<style>
+
+
+  @media only screen and (min-width: 768px){
+    .rmt_main-container {
+        height: calc(100vh - 82px);
+        max-height: -webkit-fill-available !important;
+    }
+
+    .remote-container {
+    width: 175px;
+    padding-top: 36px;
+    margin-bottom: 0;
+}
+
+    .remote-bubble {
+    width: 300px;
+    height: 150px;
+    top: -20px;
+    left: 165px;
+}
+  
+}
+
+.rmt_main-container {
+    height: calc(100vh - 82px);
+    max-height: -webkit-fill-available !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    background-color: #fff;
+}
+
+  .background-container {
+    flex-grow: 1;
+    width: 100%;
+    position: relative;
+}
+
+  .background {
+    height: 90%;
+    width: 100%;
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 50px;
+    display: block !important;
+}
+
+  .background-car {
+    z-index: 0;
+}
+
+  .background-hand {
+    z-index: 10;
+}
+
+ .background-finger {
+    z-index: 20;
+}
+
+  .invisible {
+    visibility: hidden;
+}
+
+  .remote-container {
+    position: absolute;
+    z-index: 40;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-position: top;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 150px;
+    height: 375px;
+    padding-top: 36px;
+    margin-bottom: -30px;
+    transition: transform .75s cubic-bezier(.5,-.5,.5,1.5);
+    opacity: 1;
+}
+
+ .remote-bubble--out {
+    animation-name: none;
+    transition: opacity .3s;
+    opacity: 0;
+}
+
+  .remote-bubble--down {
+    top: 61px;
+}
+
+ .remote-bubble {
+    background-position: top center;
+    width: 150px;
+    height: 75px;
+    position: absolute;
+    top: -39px;
+    left: 105px;
+    z-index: 1;
+    animation-name: breath;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
+    transform-origin: left;
+    display: block !important;
+}
+
+ .remote {
+    transition: all .15s ease;
+    border: none;
+    background: transparent;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+ .remote-hand, .remote-finger {
+    background-size: contain;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+    margin: 0 !important;
+}
+
+  .remote-hand {
+    background-position: top center;
+    width: 50%;
+    height: 22%;
+}
+
+  .remote-finger {
+    background-position: top center;
+    width: 50%;
+    height: 20%;
+}
+
+   .highlight {
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-name: highlight;
+    font-weight: 400;
+    max-width: 100%;
+    overflow: hidden;
+    padding: 0;
+}
+
+  @keyframes breath {
+  0% {
+    transform: scale(0.95); }
+
+  50% {
+    transform: scale(1); }
+
+  100% {
+    transform: scale(0.95); } }
+
+@keyframes highlight {
+  0% {
+    transform: scale(1);
+    filter: brightness(1); }
+
+  40% {
+    filter: brightness(2); }
+
+  60% {
+    filter: brightness(1); }
+
+  100% {
+    filter: brightness(1); } }
+
+.highlight {
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-name: highlight; }
+
+.off-screen {
+  transform: translateY(100vh);
+  opacity: 0; }
+
+  @media (max-width: 580px){
+
+    .background {
+    height: 85%;
+    top: 20px;
+    right: 40px;
+    background-position: right;
+    background-size: cover;
+}
+    
+}
+
+  @media (max-width: 480px){
+
+    .remote-container {
+      bottom: -30%;
+      top: 0;
+      margin: auto;
+      width: 100%;
+      height: 325px;
+  }
+
+  .remote-bubble--down {
+    top: 0;
+    left: 60%;
+}
+  
+} 
+
+  
+</style>
+
+  <script>
+
+const handButton = document.querySelector('.remote-hand')
+const fingerButton = document.querySelector('.remote-finger')
+const remoteDiv = document.querySelector('.remote-container')
+const bubble = document.querySelector('.remote-bubble')
+const bgCar = document.querySelector('.background-car')
+const bgHand = document.querySelector('.background-hand')
+const bgFinger = document.querySelector('.background-finger')
+<!-- const audioDefault = document.getElementById('audioDefault') -->
+<!-- const audioBlock = document.getElementById('audioBlock') -->
+const backgroundTimeoutDuration = 4000
+const remoteDelayDuration = 500
+let timer = null
+let tutorialInProgress = true
+const STATES = {
+    HAND: 'hand',
+    FINGER: 'finger',
+    NONE: 'none'
+}
+const state = {
+    set current(state) {
+        handleStateChange(state, this._current)
+        this._current = state
+    },
+    get current() {
+        return this._current
+    },
+}
+
+init()
+
+/**
+ * Initializes the module and calls downstream functions
+ */
+function init() {
+    setupButtons()
+    showRemote()
+}
+
+/**
+ * Shows the remote after a given time by removing the class from the element
+ */
+function showRemote() {
+    setTimeout(() => remoteDiv.classList.remove('off-screen'), remoteDelayDuration)
+}
+
+/**
+ * Sets up click handlers for the remote buttons 
+ */
+function setupButtons() {
+    handButton.classList.add('highlight')
+    handButton.addEventListener('click', () => {
+        state.current = STATES.HAND
+        if (tutorialInProgress) {
+            handButton.classList.remove('highlight')
+            fingerButton.classList.add('highlight')
+            bubble.classList.add('remote-bubble--down')
+        }
+    })
+
+    fingerButton.addEventListener('click', () => {
+        state.current = STATES.FINGER
+        if (tutorialInProgress) {
+			handButton.classList.remove('highlight')
+            fingerButton.classList.remove('highlight')
+            bubble.classList.add('remote-bubble--out')
+            tutorialInProgress = false
+        }
+    })
+}
+
+/**
+ * handles state changes by showing the appropriate background
+ * and playing the right audio
+ * @param {string} newState - The current state chosen
+ * @param {string} oldState - The previous state before the current selection
+ */
+function handleStateChange (newState, oldState) {
+    bgHand.classList.add('invisible')
+    bgFinger.classList.add('invisible')
+
+    if (newState === STATES.HAND) {
+        bgHand.classList.remove('invisible')
+        playAudio('audioBlock-middle', 'audioBlock-wave');
+    }
+
+    if (newState === STATES.FINGER) {
+        bgFinger.classList.remove('invisible')
+        playAudio('audioBlock-wave', 'audioBlock-middle');
+    }
+
+    if (newState === STATES.NONE) {
+        bgCar.classList.remove('invisible')
+    }
+}
+
+/**
+ * Plays the appropriate audio depending on state
+ * @param {string} newState - The current state chosen
+ * @param {string} oldState - The previous state before the current selection
+ */
+var counter = 2;
+function playAudio(oldState, newState) {
+document.getElementById(oldState).pause(),document.getElementById(oldState).currentTime = 0;
+document.getElementById(newState).play();
+/* console.log(counter)
+if(document.getElementById('audioBlock-'+(counter-1)))
+        document.getElementById('audioBlock-'+(counter-1)).pause(),document.getElementById('audioBlock-'+(counter-1)).currentTime = 0;
+        document.getElementById('audioBlock-'+counter).play();
+counter++;
+if(counter == 35)
+counter = 2;
+    startTimer() */
+}
+
+/**
+ * Starts off a timer to clear the state back to NONE
+ */
+function startTimer () {
+    clearTimeout(timer)
+    timer = setTimeout(() => {
+        state.current = STATES.NONE
+        timer = null
+    }, backgroundTimeoutDuration)
+}
+
+</script>
+
+{% schema %}
+  {
+    "name": "Remote base",
+    "settings": [
+      {
+        "type":"image_picker",
+        "id":"car-img",
+        "label":"Car Image"
+      },
+      {
+        "type":"image_picker",
+        "id":"hand-img",
+        "label":"Hand Image"
+      },
+      {
+        "type":"image_picker",
+        "id":"finger-img",
+        "label":"Finger Image"
+      },
+      {
+        "type":"image_picker",
+        "id":"remote-img",
+        "label":"Remote Image"
+      },
+      {
+        "type":"image_picker",
+        "id":"remote-bubble",
+        "label":"Remote Bubble"
+      },
+      {
+        "type":"image_picker",
+        "id":"remote-hand",
+        "label":"Remote Hand"
+      },
+      {
+        "type":"image_picker",
+        "id":"remote-finger",
+        "label":"Remote Finger"
+      }
+    ],
+    "presets":[
+      {
+        "name":"Remote Base"
+      }
+    ]
+  }
+{% endschema %}

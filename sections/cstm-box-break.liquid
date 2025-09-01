@@ -1,0 +1,188 @@
+<div class="cstm-container">
+        <div class="container">
+            <div class="cstm-header">
+               <div class="cstm-head">
+                <h2>{{ section.settings.title }}</h2>
+               </div>
+            </div>
+          <div class="cstm-main-slider">
+          {% for block in section.blocks %}
+            <div class="slider_content">
+                <div class="cstm-img">
+                    <img src="{{ block.settings.img | img_url :"master" }}" width="" height="" loading="lazy">
+                </div>
+                <div class="cstm-img-content">
+                   <div class="cstm-date-content">
+                    <a href="#">
+                        <span class="sp_svg"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none"><path d="M5.33333 2.27279V4.27279" stroke="#FFDD00" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10.6667 2.27279V4.27279" stroke="#FFDD00" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path><path d="M2.33333 6.99945H13.6667" stroke="#FFDD00" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14 6.60612V12.2728C14 14.2728 13 15.6061 10.6667 15.6061H5.33333C3 15.6061 2 14.2728 2 12.2728V6.60612C2 4.60612 3 3.27279 5.33333 3.27279H10.6667C13 3.27279 14 4.60612 14 6.60612Z" stroke="#FFDD00" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10.4631 10.0728H10.4691" stroke="#FFDD00" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10.4631 12.0728H10.4691" stroke="#FFDD00" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path><path d="M7.99699 10.0728H8.00298" stroke="#FFDD00" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path><path d="M7.99699 12.0728H8.00298" stroke="#FFDD00" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path><path d="M5.52954 10.0728H5.53553" stroke="#FFDD00" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path><path d="M5.52954 12.0728H5.53553" stroke="#FFDD00" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+                        <span class="sp_time">{{ block.settings.time }}</span>  
+                    </a>
+                    </div>
+                <div class="cstm-img-heading">
+                    <div class="cstm-title">
+                      <h2 class="cstm-hd-title">
+                        <a href="#">{{ block.settings.hd-title}}</a>
+                    </h2> 
+                    </div>
+                    <div class="cstm-subtitle"><p>{{ block.settings.subtitle }}</p></div>
+                </div>
+                
+                </div>  
+            </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+
+<script>
+$('.cstm-main-slider').slick({
+  dots: true,
+  infinite: false,
+  speed: 300,
+  slidesToShow: 2,
+  slidesToScroll: 2,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        infinite: false,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+    // You can unslick at a given breakpoint now by adding:
+    // settings: "unslick"
+    // instead of a settings object
+  ]
+});
+  
+</script>
+
+<style>
+.cstm-main-slider .slick-arrow {
+    display: none;
+}
+
+.cstm-main-slider button {
+    display: none;
+}
+
+ul.slick-dots {
+    position: absolute;
+    bottom: -5%;
+    display: flex;
+    gap: 25px;
+    left: 47%;
+}
+  
+.cstm-container {
+    width: 1180px;
+    margin: 0 auto;
+}
+
+.cstm-main-slider {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+  position: relative;
+}  
+
+.cstm-head{
+    text-align: center;
+    text-transform: uppercase;
+}
+
+
+.slider_content {
+    width: 50%;
+    gap: 20px;
+    display: flex !important;
+    align-items: center;
+}
+
+.cstm-img {
+    width: 100%;
+}
+
+.cstm-img img {
+    width: 100%;
+    height: 100%;
+}
+
+.cstm-date-content a {
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    padding: 5px 11px;
+    border-radius: 26px;
+}
+
+.cstm-title a {
+    text-decoration: none;
+    color: black;
+    font-size: 25px;
+    font-weight: 600;
+}
+</style>
+
+
+
+{% schema %}
+  {
+    "name": "Box Break",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading"
+      }
+    ],
+    "blocks": [
+       {
+        "type": "block",
+        "name": "Box block",
+         "settings": [
+           {
+            "type": "image_picker",
+             "id": "img",
+             "label": "Image"
+           },
+           {
+             "type": "text",
+             "id": "time",
+             "label": "Date"
+           },
+           {
+             "type": "text",
+             "id": "hd-title",
+             "label": "Heading"
+           },
+           {
+             "type": "richtext",
+             "id": "subtitle",
+             "label": "SubTitle"
+           }
+         ]
+       }
+    ],
+  "presets": [{
+    "name": "Box Break"
+  }]
+  }
+  
+{% endschema %}

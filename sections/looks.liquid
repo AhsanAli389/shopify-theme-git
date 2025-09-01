@@ -1,0 +1,203 @@
+<div class="main-container"> 
+  <div class="cont-look">
+     <div class="cstm-col">
+       <h3>{{ section.settings.head }}</h3>
+       {% if section.settings.btn != blank %}
+       <a class="shop-but" href="{{ section.settings.btn-url }}">{{ section.settings.btn }}</a>
+        {% endif %} 
+       <div class="icon-main">
+         <div class="icon-look">
+         <i class="fa-solid fa-bottle-water"></i>
+          </div>
+         <span>{{ section.settings.icon-text}}</span>
+       </div>
+     </div>
+    <div class="cstm-img">
+      {% if section.settings.img != blank %}
+      <img src="{{ section.settings.img | img_url: "master" }}" width="" height="" loading="lazy">
+      {% endif %} 
+    </div>
+    <div class="cstm-rating">
+      <div class="txt-rat">{{ section.settings.rating-txt }}</div>
+      <div class="description">{{ section.settings.rat-para }}</div>
+    </div>
+  </div>
+  
+</div>
+
+
+<style>
+
+.main-container {
+    padding-top: 60px;
+    padding-bottom: 50px;
+      max-width: 1280px;
+    margin: 0 auto;
+}
+
+.cont-look {
+    display: flex;
+    align-items: center;
+}  
+  
+.cstm-col {
+    width: 33%;
+    padding-left: 15px;
+    padding-right: 15px;
+}  
+  
+.cstm-col h3 {
+    letter-spacing: -1px;
+    font-size: 45px;
+}  
+ 
+.cstm-img {
+    width: 39%;
+    height: 100%;
+}  
+  
+img {
+    width: 100%;
+    height: 100%;
+}  
+
+.cstm-rating {
+    width: 28%;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+  
+a.shop-but {
+    text-decoration: none;
+    color: white;
+    background: black;
+    padding: 10px 30px;
+    border-radius: 5px;
+}
+a.shop-but:hover {
+    background: white;
+    color: black;
+    border: 2px solid black;
+}  
+.icon-main {
+    display: flex;
+    margin-top: 50px;
+    align-items: center;
+      gap: 20px;
+}  
+.icon-look {
+    background: #ededed;
+    padding: 12px 25px;
+    border-radius: 50%;
+    font-size: 23px;
+}
+  
+.txt-rat {
+    font-size: 19px;
+    color: black;
+    font-weight: 600;
+}  
+.txt-rat {
+    font-size: 19px;
+    color: black;
+    font-weight: 600;
+}  
+
+.description {
+    color: black;
+    line-height: 26px;
+    max-width: 239px;
+}  
+
+.icon-main span {
+    line-height: 25px;
+    max-width: 200px;
+    color: #111111;
+}
+  
+@media (max-width: 993px){
+   .main-container{
+     max-width: 767px;
+   }
+  .cont-look {
+   flex-wrap: wrap;  
+} 
+  .cstm-col{
+    width: 51%
+  }
+  .cstm-img {
+    width: 49%; 
+  }
+  .cstm-rating {
+    width: 100%;  
+    margin-top: 50px;
+  }
+  .description {
+    max-width:none;
+  }
+}
+
+@media (max-width: 576px){
+.cstm-col{
+    width: 100%;
+    text-align: center;
+  }
+  .cstm-img {
+    margin-top: 20px;
+    width: 100%; 
+  }
+  .cstm-rating {
+    text-align: center;
+}
+
+}  
+</style>
+
+{% schema %}
+  {
+    "name": "look at how",
+    "settings": [
+      {
+       "type": "text",
+        "id": "head",
+        "label": "heading"
+      },
+      {
+        "type": "text",
+        "id": "btn",
+        "label": "Button text"
+      },
+      {
+        "type": "url",
+        "id": "btn-url",
+        "label": "Button Url"
+      },
+      {
+        "type": "text",
+        "id": "icon-text",
+        "label": "Icon Text"
+      },
+      {
+        "type": "image_picker",
+        "id": "img",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "rating-txt",
+        "label": "Rating text"
+      },
+      {
+        "type": "richtext",
+        "id": "rat-para",
+        "label": "Rating paragraph"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Look at how"
+      }
+    ]
+  }
+{% endschema %}
